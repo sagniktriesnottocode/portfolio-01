@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sagnik Sen — Builder, Researcher & Founder</title>
+  <meta name="description" content="Sagnik Sen builds IoT products, AI research, and communities. Selected work in food safety, NLP, publishing, and social impact." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+<script>
+  (function () {
+    let theme = "light";
+
+    try {
+      const savedTheme = localStorage.getItem("sagnik-theme");
+
+      if (savedTheme === "light" || savedTheme === "dark") {
+        theme = savedTheme;
+      }
+    } catch (error) {
+      /* Keep light mode if browser storage is unavailable. */
+    }
+
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>
+  <style>
+    :root {
+      --paper: #f6efe4;
+      --paper-2: #efe3d2;
+      --ink: #241512;
+      --maroon: #6d1a1a;
+      --red: #b3261e;
+      --orange: #d96b1f;
+      --muted: #6f5c4f;
+      --line: #d8c8b4;
+      --card: #fffaf1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .label, .nav, .btn, .index-number {
+      font-family: "Courier Prime", "Courier New", monospace;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(246, 239, 228, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .logo {
+      font-weight: 700;
+      color: var(--maroon);
+    }
+
+    .nav-links { display: flex; gap: 26px; }
+
+    .nav-links a { position: relative; color: var(--muted); }
+
+    .nav-links a:hover { color: var(--red); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 120px 0 90px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -35% auto;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(217,107,31,.24), transparent 62%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--maroon);
+      border: 1px solid var(--maroon);
+      padding: 7px 14px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    h1 {
+      font-size: clamp(46px, 8vw, 100px);
+      line-height: .96;
+      letter-spacing: -.05em;
+      font-weight: 700;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero-copy {
+      margin-top: 30px;
+      max-width: 640px;
+      font-size: 21px;
+      color: var(--muted);
+    }
+
+    .hero-side {
+      border-left: 1px solid var(--line);
+      padding-left: 28px;
+    }
+
+    .hero-side p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-side strong {
+      display: block;
+      font-family: "Courier Prime", monospace;
+      color: var(--maroon);
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--maroon);
+      border-color: var(--maroon);
+      color: var(--paper);
+    }
+
+    .btn-primary:hover { background: var(--red); border-color: var(--red); }
+
+    .btn-ghost:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    /* Section basics */
+    section { padding: 100px 0; }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .index-number {
+      color: var(--orange);
+      font-size: 15px;
+      letter-spacing: .1em;
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      color: var(--maroon);
+    }
+
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+      margin-bottom: 60px;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      margin: 0 0 70px;
+    }
+
+    /* Project sections */
+    .project {
+      padding: 90px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .project:first-of-type { border-top: 0; padding-top: 0; }
+
+    .project-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 45px;
+    }
+
+    .project-kicker {
+      font-family: "Courier Prime", monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .project h3 {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: .98;
+      letter-spacing: -.05em;
+      color: var(--maroon);
+    }
+
+    .project-meta {
+      text-align: right;
+      font-family: "Courier Prime", monospace;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .project-meta span {
+      display: block;
+      color: var(--red);
+    }
+
+    .project-body {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .project-copy p {
+      margin-bottom: 20px;
+      color: #3c2c25;
+    }
+
+    .project-copy p:first-of-type {
+      font-size: 23px;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .fact-list {
+      list-style: none;
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .fact-list li {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .fact-list strong {
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--red);
+      padding-top: 4px;
+    }
+
+    .image-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .image-frame {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 12px 12px 0 rgba(109, 26, 26, .10);
+    }
+
+    .image-frame.large { aspect-ratio: 16 / 10; }
+    .image-frame.small { aspect-ratio: 4 / 3; }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(217,107,31,.10), transparent),
+        var(--paper-2);
+      color: var(--muted);
+      font-family: "Courier Prime", monospace;
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .caption {
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      margin-top: 8px;
+    }
+
+    /* Smaller projects */
+    .archive {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .archive-item {
+      padding: 38px 30px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      transition: background .2s ease;
+    }
+
+    .archive-item:nth-child(2n) { border-right: 0; }
+
+    .archive-item:hover { background: var(--card); }
+
+    .archive-item h4 {
+      font-size: 24px;
+      color: var(--maroon);
+      margin-bottom: 8px;
+    }
+
+    .archive-item .role {
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .archive-item p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* About */
+    .about {
+      background: var(--maroon);
+      color: var(--paper);
+    }
+
+    .about .container {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+    }
+
+    .about h2 { color: var(--paper); }
+
+    .about .index-number { color: var(--orange); }
+
+    .about p {
+      color: rgba(246, 239, 228, .82);
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .about p:first-of-type {
+      font-size: 27px;
+      color: var(--paper);
+    }
+
+    .about .fact-list { border-color: rgba(246,239,228,.25); }
+
+    .about .fact-list li { border-color: rgba(246,239,228,.25); }
+
+    .about .fact-list strong { color: var(--orange); }
+
+    /* Contact */
+    .contact {
+      background: var(--paper-2);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .contact h2 { color: var(--red); }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 620px;
+      margin-top: 18px;
+    }
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .project-head,
+      .project-body,
+      .about .container,
+      .contact-inner { grid-template-columns: 1fr; }
+
+      .hero { padding: 80px 0 60px; }
+      section { padding: 70px 0; }
+      .project { padding: 65px 0; }
+      .project-meta { text-align: left; }
+      .hero-side { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 24px; }
+      .archive { grid-template-columns: 1fr; }
+      .archive-item { border-right: 0; }
+      .nav-links { display: none; }
+    }
+    /* =========================================
+   NOTEBOOK THEME
+   ========================================= */
+
+:root {
+  color-scheme: light;
+
+  --paper: #f8f1e5;
+  --paper-2: #eee2d1;
+  --ink: #34201c;
+  --maroon: #731f25;
+  --red: #a8352c;
+  --orange: #aa4c1d;
+  --muted: #735d51;
+  --line: #d9c7b4;
+  --card: #fffaf0;
+
+  --grid-line: rgba(115, 91, 71, 0.12);
+  --grid-major: rgba(115, 91, 71, 0.07);
+  --margin-line: rgba(168, 53, 44, 0.35);
+  --header-bg: rgba(248, 241, 229, 0.94);
+  --shadow: rgba(109, 26, 26, 0.1);
+  --body-copy: #49362d;
+
+  --about-bg: #6d1a1a;
+  --about-text: #f8f1e5;
+  --about-muted: #ead8c7;
+  --about-accent: #ffc08f;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #211b1a;
+  --paper-2: #2c2220;
+  --ink: #f2e5d5;
+  --maroon: #eda497;
+  --red: #f19b85;
+  --orange: #efb17d;
+  --muted: #c6b0a2;
+  --line: #574139;
+  --card: #302523;
+
+  --grid-line: rgba(239, 218, 193, 0.07);
+  --grid-major: rgba(239, 218, 193, 0.035);
+  --margin-line: rgba(241, 155, 133, 0.32);
+  --header-bg: rgba(33, 27, 26, 0.94);
+  --shadow: rgba(0, 0, 0, 0.2);
+  --body-copy: #deccbc;
+
+  --about-bg: #352022;
+  --about-text: #f2e5d5;
+  --about-muted: #deccbc;
+  --about-accent: #efb17d;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 6px;
+}
+
+/* Top navigation and theme button */
+
+header {
+  background: var(--header-bg);
+  border-bottom-color: var(--line);
+}
+
+.nav {
+  gap: 24px;
+}
+
+.logo {
+  font-size: 22px;
+  letter-spacing: -0.08em;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  margin-left: auto;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--red);
+  transform: rotate(-2deg);
+}
+
+.theme-toggle-dot {
+  width: 12px;
+  height: 12px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    currentColor 50%,
+    transparent 50%
+  );
+}
+
+/* Notebook landing screen */
+
+.notebook-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height: calc(100svh - 74px);
+  padding: 62px 0 28px;
+
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
+}
+
+/* Remove the old radial-gradient decoration. */
+.hero.notebook-hero::before {
+  content: none;
+}
+
+/* Red notebook margin. */
+.notebook-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: max(30px, calc((100vw - 1180px) / 2 + 36px));
+  width: 1px;
+  background: var(--margin-line);
+  z-index: -1;
+}
+
+.notebook-page {
+  max-width: 1000px;
+  padding-left: 36px;
+}
+
+/* Hatched banner inspired by your sketch */
+
+.notebook-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+
+  width: min(100%, 840px);
+  margin: 0 auto 64px;
+  padding: 16px 22px;
+
+  border: 3px solid var(--maroon);
+  border-radius: 2px 5px 3px 6px;
+  box-shadow: 4px 4px 0 var(--shadow);
+  transform: rotate(-1deg);
+}
+
+.banner-title {
+  flex-shrink: 0;
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: clamp(17px, 2.6vw, 28px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--maroon);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.banner-hatching {
+  flex: 1;
+  min-width: 20px;
+  height: 32px;
+  background: repeating-linear-gradient(
+    -48deg,
+    transparent 0 13px,
+    var(--maroon) 13px 16px,
+    transparent 16px 27px
+  );
+}
+
+.notebook-heading {
+  margin-bottom: 48px;
+}
+
+.handwritten-note {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--muted);
+
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+/* Override the previous hero heading. */
+.notebook-hero h1 {
+  max-width: none;
+  color: var(--ink);
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: clamp(42px, 6.8vw, 82px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.065em;
+}
+
+.name-underline {
+  position: relative;
+  display: inline-block;
+  color: var(--maroon);
+}
+
+.name-underline::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -3px;
+  left: 3px;
+  height: 7px;
+
+  border-bottom: 3px solid var(--orange);
+  border-radius: 50%;
+  transform: rotate(-2deg);
+}
+
+/* Dashed introduction area */
+
+.introduction-box {
+  position: relative;
+  max-width: 810px;
+  margin-left: 14px;
+  padding: 38px 40px 32px;
+
+  border: 2px dashed var(--maroon);
+  border-radius: 7px 3px 8px 4px;
+  background: var(--paper);
+}
+
+.box-label {
+  position: absolute;
+  top: -12px;
+  left: 25px;
+
+  padding: 0 10px;
+  background: var(--paper);
+  color: var(--red);
+
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.hero .introduction-box p {
+  max-width: 680px;
+  margin: 0;
+}
+
+.hero .introduction-box .intro-lead {
+  margin-bottom: 16px;
+  color: var(--ink);
+  font-size: clamp(22px, 2.8vw, 29px);
+  line-height: 1.35;
+}
+
+.hero .introduction-box .intro-detail {
+  margin-top: 14px;
+  color: var(--body-copy);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.notebook-work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-top: 28px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--red);
+  color: var(--red);
+
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: 14px;
+}
+
+.notebook-work-link span {
+  display: inline-block;
+  font-size: 24px;
+  transition: transform 160ms ease;
+}
+
+.notebook-work-link:hover span {
+  transform: translate(3px, 3px);
+}
+
+.notebook-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+  margin-top: 68px;
+  color: var(--muted);
+
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: 12px;
+}
+
+.scroll-note {
+  color: var(--red);
+}
+
+.scroll-note span {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* Match existing project sections to both themes */
+
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+.project-copy p {
+  color: var(--body-copy);
+}
+
+.project-copy p:first-of-type {
+  color: var(--ink);
+}
+
+.image-frame {
+  background: var(--card);
+  box-shadow: 10px 10px 0 var(--shadow);
+}
+
+.image-placeholder {
+  background: var(--paper-2);
+  color: var(--muted);
+}
+
+.btn-primary {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.about {
+  background: var(--about-bg);
+  color: var(--about-text);
+}
+
+.about h2,
+.about p:first-of-type {
+  color: var(--about-text);
+}
+
+.about p {
+  color: var(--about-muted);
+}
+
+.about .index-number,
+.about .fact-list strong {
+  color: var(--about-accent);
+}
+
+/* Responsive notebook */
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+  }
+
+  .notebook-hero {
+    padding: 44px 0 26px;
+  }
+
+  .notebook-page {
+    padding-left: 20px;
+  }
+
+  .notebook-banner {
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .notebook-heading {
+    margin-bottom: 38px;
+  }
+
+  .introduction-box {
+    margin-left: 0;
+    padding: 34px 26px 28px;
+  }
+
+  .notebook-bottom {
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    width: calc(100% - 36px);
+  }
+
+  .notebook-page {
+    width: calc(100% - 44px);
+    padding-left: 14px;
+  }
+
+  .notebook-hero::after {
+    left: 22px;
+  }
+
+  .notebook-banner {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .banner-title {
+    font-size: 16px;
+  }
+
+  .banner-hatching {
+    height: 25px;
+    min-width: 10px;
+  }
+
+  .handwritten-note {
+    font-size: 11px;
+  }
+
+  .notebook-hero h1 {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  .introduction-box {
+    padding: 30px 20px 24px;
+  }
+
+  .hero .introduction-box .intro-detail {
+    font-size: 17px;
+  }
+
+  .box-label {
+    left: 12px;
+    font-size: 10px;
+  }
+
+  .notebook-bottom {
+    align-items: flex-start;
+    font-size: 10px;
+  }
+
+  .theme-toggle {
+    padding: 10px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#top" class="logo" aria-label="Sagnik Sen home">SS.</a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#aahar">AAHAR</a>
+      <a href="#research">Research</a>
+      <a href="#qissa">Qissa</a>
+      <a href="#archive">Archive</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button
+      class="theme-toggle"
+      id="theme-toggle"
+      type="button"
+      aria-label="Switch to dark theme"
+      aria-pressed="false"
+    >
+      <span class="theme-toggle-dot" aria-hidden="true"></span>
+      <span id="theme-toggle-text">Dark mode</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero notebook-hero" aria-labelledby="intro-title">
+  <div class="container notebook-page">
+
+    <div class="notebook-banner">
+      <span class="banner-hatching" aria-hidden="true"></span>
+      <span class="banner-title">Site Prototype #01</span>
+      <span class="banner-hatching" aria-hidden="true"></span>
+    </div>
+
+    <div class="notebook-heading">
+      <span class="handwritten-note">a work in progress</span>
+
+      <h1 id="intro-title">
+        Hi! I’m <span class="name-underline">Sagnik.</span>
+      </h1>
+    </div>
+
+    <div class="introduction-box">
+      <span class="box-label">A quick introduction</span>
+
+      <p class="intro-lead">
+        I build things, research questions, and bring people together.
+      </p>
+
+      <p class="intro-detail">
+        Recently, that has meant building a food-spoilage detector,
+        researching harmful bot activity on X, and co-founding a
+        publication for emerging writers.
+      </p>
+
+      <p class="intro-detail">
+        This is my notebook of projects, experiments, and things
+        I’ve learned along the way. The code to this website is entirely taken from perplexity, I do not know HTML at all, for the record.
+      </p>
+
+      <a class="notebook-work-link" href="#aahar">
+        Take a look at my work <span aria-hidden="true">↘</span>
+      </a>
+    </div>
+
+    <div class="notebook-bottom">
+      <span class="notebook-page-number">Portfolio / 01</span>
+      <a href="#aahar" class="scroll-note">
+        Projects below <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- AAHAR -->
+  <section class="project" id="aahar">
+    <div class="container">
+      <div class="project-head">
+        <div>
+          <div class="project-kicker">01 — Food Safety Technology</div>
+          <h3>AAHAR</h3>
+        </div>
+        <div class="project-meta">
+          <span>Founder & IoT Developer</span>
+          2024–Present<br />
+          ESP / NodeMCU · IoT
+        </div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-copy">
+          <p>
+            AAHAR began with a simple question: why do food businesses still rely on guesswork
+            to detect spoilage?
+          </p>
+          <p>
+            I built an IoT food-spoilage detection system using ESP/NodeMCU hardware, designed
+            the MVP, and developed the detection workflow. The project earned a provisional
+            patent and secured letters of intent from Swiggy and JW Marriott to explore
+            real-world deployment.
+          </p>
+          <p>
+            AAHAR is my clearest example of taking an idea from problem to prototype to external
+            validation.
+          </p>
+
+          <ul class="fact-list">
+            <li><strong>Problem</strong><span>Food spoilage is often detected too late, creating waste and safety risk.</span></li>
+            <li><strong>Build</strong><span>ESP/NodeMCU-based IoT MVP with a spoilage-detection workflow.</span></li>
+            <li><strong>Validation</strong><span>Provisional patent; LOIs from Swiggy and JW Marriott.</span></li>
+            <li><strong>Next</strong><span>Improve reliability, field-test the device, and move toward deployment.</span></li>
+          </ul>
+        </div>
+
+        <div class="image-stack">
+          <figure>
+            <div class="image-frame large">
+              <div class="image-placeholder">Insert AAHAR device photo / prototype</div>
+              <!-- Replace the div above with:
+              <img src="images/aahar-device.jpg" alt="AAHAR IoT food-spoilage detection prototype"> -->
+            </div>
+            <figcaption class="caption">Fig. 01 — AAHAR MVP hardware</figcaption>
+          </figure>
+
+          <figure>
+            <div class="image-frame small">
+              <div class="image-placeholder">Insert dashboard / circuit / testing image</div>
+              <!-- Replace with:
+              <img src="images/aahar-dashboard.jpg" alt="AAHAR monitoring dashboard or circuit testing"> -->
+            </div>
+            <figcaption class="caption">Fig. 02 — Detection workflow or testing setup</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="project" id="research">
+    <div class="container">
+      <div class="rule"></div>
+
+      <div class="project-head">
+        <div>
+          <div class="project-kicker">02 — Applied AI Research</div>
+          <h3>Harmful Bot Activity on X</h3>
+        </div>
+        <div class="project-meta">
+          <span>NLP Research Intern</span>
+          SAAI × IIM Indore<br />
+          NLP · Sentiment Analysis
+        </div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-copy">
+          <p>
+            Online platforms depend on trust, but coordinated and harmful bot activity quietly
+            breaks it.
+          </p>
+          <p>
+            As an NLP Research Intern with SAAI in collaboration with IIM Indore, I researched
+            harmful bot activity on X. I conducted a literature review of more than 50 research
+            papers, studied sentiment analysis, and built an analyser-recommender prototype to
+            surface potentially problematic accounts and content patterns.
+          </p>
+          <p>
+            I am currently drafting a research paper based on this work.
+          </p>
+
+          <ul class="fact-list">
+            <li><strong>Question</strong><span>How can NLP help identify harmful bot behaviour at scale?</span></li>
+            <li><strong>Method</strong><span>Literature review, sentiment analysis, and prototype development.</span></li>
+            <li><strong>Output</strong><span>Analyser-recommender prototype and a paper in drafting.</span></li>
+            <li><strong>Scale</strong><span>50+ research papers reviewed.</span></li>
+          </ul>
+        </div>
+
+        <div class="image-stack">
+          <figure>
+            <div class="image-frame large">
+              <div class="image-placeholder">Insert research diagram / model architecture</div>
+              <!-- Replace with:
+              <img src="images/nlp-architecture.png" alt="NLP bot detection model architecture"> -->
+            </div>
+            <figcaption class="caption">Fig. 03 — Analyser-recommender approach</figcaption>
+          </figure>
+
+          <figure>
+            <div class="image-frame small">
+              <div class="image-placeholder">Insert sentiment analysis / literature review visual</div>
+              <!-- Replace with:
+              <img src="images/sentiment-analysis.jpg" alt="Sentiment analysis results or research notes"> -->
+            </div>
+            <figcaption class="caption">Fig. 04 — Research process</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QISSA -->
+  <section class="project" id="qissa">
+    <div class="container">
+      <div class="rule"></div>
+
+      <div class="project-head">
+        <div>
+          <div class="project-kicker">03 — Community & Publishing</div>
+          <h3>Qissa Quarterly</h3>
+        </div>
+        <div class="project-meta">
+          <span>Co-Founder & Editor-in-Chief</span>
+          100+ works published<br />
+          30+ writer community
+        </div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-copy">
+          <p>
+            Qissa Quarterly started as a simple idea: emerging writers deserve a serious place
+            to publish.
+          </p>
+          <p>
+            I co-founded the platform, designed its website, and served as Editor-in-Chief. Over
+            three quarterly issues, we published more than 100 works and built a community of
+            30+ writers.
+          </p>
+          <p>
+            The project taught me how to build something people return to: editorial standards,
+            a usable website, consistent publishing, and a community that feels ownership over
+            the work.
+          </p>
+
+          <ul class="fact-list">
+            <li><strong>Problem</strong><span>Emerging writers lacked an accessible, credible publication space.</span></li>
+            <li><strong>Build</strong><span>Website design, editorial workflow, and quarterly publishing system.</span></li>
+            <li><strong>Output</strong><span>Three issues and 100+ published works.</span></li>
+            <li><strong>Community</strong><span>30+ writers engaged and published.</span></li>
+          </ul>
+        </div>
+
+        <div class="image-stack">
+          <figure>
+            <div class="image-frame large">
+              <div class="image-placeholder">Insert Qissa Quarterly website screenshot</div>
+              <!-- Replace with:
+              <img src="images/qissa-website.png" alt="Qissa Quarterly website homepage"> -->
+            </div>
+            <figcaption class="caption">Fig. 05 — Qissa Quarterly website</figcaption>
+          </figure>
+
+          <figure>
+            <div class="image-frame small">
+              <div class="image-placeholder">Insert issue cover / published work screenshot</div>
+              <!-- Replace with:
+              <img src="images/qissa-issue.jpg" alt="Qissa Quarterly issue cover or published writing"> -->
+            </div>
+            <figcaption class="caption">Fig. 06 — Published issue</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEC -->
+  <section class="project" id="nec">
+    <div class="container">
+      <div class="rule"></div>
+
+      <div class="project-head">
+        <div>
+          <div class="project-kicker">04 — Social Impact Venture</div>
+          <h3>Micro-Insurance for Gig Workers</h3>
+        </div>
+        <div class="project-meta">
+          <span>NEC Jr., IIT Bombay</span>
+          National Finalist<br />
+          4th in India
+        </div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-copy">
+          <p>
+            Gig workers often face accidents without adequate financial protection.
+          </p>
+          <p>
+            For NEC Jr. at IIT Bombay, I developed a micro-insurance solution designed to make
+            accident coverage more accessible and affordable for gig workers. The project placed
+            fourth nationally, and I later continued developing the idea with a competition
+            panelist.
+          </p>
+
+          <ul class="fact-list">
+            <li><strong>Problem</strong><span>Gig workers lack practical accident-coverage options.</span></li>
+            <li><strong>Solution</strong><span>Micro-insurance model designed for low-cost, flexible coverage.</span></li>
+            <li><strong>Result</strong><span>4th nationally at NEC Jr., IIT Bombay.</span></li>
+          </ul>
+        </div>
+
+        <div class="image-stack">
+          <figure>
+            <div class="image-frame large">
+              <div class="image-placeholder">Insert pitch deck / certificate / product mockup</div>
+              <!-- Replace with:
+              <img src="images/nec-pitch.jpg" alt="NEC Jr. pitch deck or certificate"> -->
+            </div>
+            <figcaption class="caption">Fig. 07 — NEC Jr. pitch material</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section id="archive">
+    <div class="container">
+      <div class="section-title">
+        <span class="index-number">05</span>
+        <h2>Archive</h2>
+      </div>
+      <p class="section-intro">
+        Other work across competitions, research, leadership, music, and self-directed projects.
+      </p>
+
+      <div class="archive">
+        <div class="archive-item">
+          <h4>Lodha Tech4Change</h4>
+          <div class="role">Innovation Competition · Semifinalist</div>
+          <p>
+            Pitched and built a smart-camera prototype intended to detect black-money
+            transactions. Advanced to the semifinals.
+          </p>
+        </div>
+
+        <div class="archive-item">
+          <h4>Ectogenesis Research</h4>
+          <div class="role">Independent Researcher</div>
+          <p>
+            Researched artificial-womb technology and ectogenesis, then built a life-sized
+            biomedical model for a school science exhibition.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div>
+        <div class="section-title">
+          <span class="index-number">06</span>
+          <h2>About</h2>
+        </div>
+      </div>
+
+      <div>
+        <p>
+          I am a builder from Mumbai interested in the point where hardware, AI, and real-world
+          systems meet.
+        </p>
+        <p>
+          I do not start with a technology and look for a use case. I start with something
+          observable — spoiled food, harmful bots, uninsured gig workers, writers without a
+          platform — and ask what could make it measurably better.
+        </p>
+        <p>
+          Sometimes the answer is a device. Sometimes it is a research question. Sometimes it is
+          a publication, a community, or a school-wide initiative. What stays constant is the
+          move from idea to evidence.
+        </p>
+
+        <ul class="fact-list">
+          <li><strong>Builds</strong><span>IoT products, AI research prototypes, and community platforms.</span></li>
+          <li><strong>Leads</strong><span>Teams, editorial processes, school initiatives, and rehearsals.</span></li>
+          <li><strong>Values</strong><span>Agency, execution, clarity, and proof of work.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+      <div>
+        <div class="section-title">
+          <span class="index-number">07</span>
+          <h2>Let’s talk</h2>
+        </div>
+        <p>
+          I’m always interested in conversations about building, applied AI, food systems,
+          research, and community-driven products.
+        </p>
+      </div>
+
+      <div class="hero-links">
+        <a class="btn btn-primary" href="mailto:sagniksen1509@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="[LINKEDIN]">LinkedIn</a>
+        <a class="btn btn-ghost" href="[GITHUB]">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© 2026 Sagnik Sen</span>
+    <span>Designed & built in HTML/CSS</span>
+  </div>
+</footer>
+<script>
+  const themeButton = document.getElementById("theme-toggle");
+  const themeButtonText = document.getElementById("theme-toggle-text");
+
+  function updateThemeButton() {
+    const isDark =
+      document.documentElement.dataset.theme === "dark";
+
+    themeButtonText.textContent = isDark
+      ? "Light mode"
+      : "Dark mode";
+
+    themeButton.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light theme" : "Switch to dark theme"
+    );
+
+    themeButton.setAttribute("aria-pressed", String(isDark));
+  }
+
+  themeButton.addEventListener("click", function () {
+    const nextTheme =
+      document.documentElement.dataset.theme === "dark"
+        ? "light"
+        : "dark";
+
+    document.documentElement.dataset.theme = nextTheme;
+
+    try {
+      localStorage.setItem("sagnik-theme", nextTheme);
+    } catch (error) {
+      /* Switching still works without saving the preference. */
+    }
+
+    updateThemeButton();
+  });
+
+  updateThemeButton();
+</script>
+</body>
+</html>
